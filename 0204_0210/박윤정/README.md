@@ -1,11 +1,24 @@
-# 싸피 알고리즘
-## 1/28 ~ 2/3
-[- 시뮬 뽀개기 2번](https://www.acmicpc.net/problem/11559)  
-[- 연구소 삼성역량테스트 기출](https://www.acmicpc.net/problem/14502)  
-[- 색종이 붙이기 A형 기출](https://www.acmicpc.net/problem/17136)  
-[- 💪 불](https://www.acmicpc.net/problem/4179)
+# [BaekJoon] 게리맨더링 17471
+경우의 수 만들기 -> 그래프 인접 여부 확인
+그래프 입력을 인접행렬로 받기
+재귀를 활용하여 경우의 수 만들기
+경우의 수를 활용하여 그래프 인접한지 확인
 
-## 2/4 ~ 2/10
-[- a형기출 게리맨더링](https://www.acmicpc.net/problem/17471)  
-[- 디저트 카페](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5VwAr6APYDFAWu&categoryId=AV5VwAr6APYDFAWu&categoryType=CODE)  
-[- 미생물 격리](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV597vbqAH0DFAVl&categoryId=AV597vbqAH0DFAVl&categoryType=CODE)
+
+
+# [SWEA] 디저트 카페 2105
+대각선 이동 -> 디저트 적합도 체크 -> 가던 방향? 방향 바꾸기? -> 디저트 개수 구하기
+입력 받은 배열을 돌면서 그 좌표 기준으로 디저트 찾기 시작
+디저트 중복 여부 판단을 위해 HashMap을 활용함
+DFS를 활용하여 반복하면서 시작 좌표에 다시 도달하면 디저트 개수 구하고 종료
+대각선 좌표를 돌면서 범위를 벗어나거나 방문한 곳이거나, 디저트가 중복되면 종료
+한 방향으로 계속 가는 경우와 방향이 바뀌는 경우 두 경우를 고려하여 재귀를 돌린다.
+
+# [SWEA] 미생물 격리 2382
+미생물 이동(약품 처리) -> 겹치는 것 죽이기 -> 미생물 총합 구하기
+미생물(Monster)을 Queue에 넣어서 관리
+Queue에서 하나씩 빼서 이동시킴 (이때, 약품 칠해진 부분 처리)
+이동시킨 후 우선순위큐에 미생물을 넣기 (우선 순위 큐를 활용하여 겹치는 것들 죽이기 - 우선순위큐로 num이 큰 것먼저 나오게 함으로써)
+이때 좌표를 key로 HashMap을 활용하여 put해주는데 이미 포함되어있다면 죽여야하므로 num값만 합쳐주고 다시 put
+HashMap에 넣은 값들을 Queue에 다시 넣어 반복
+count만큼 반복한 뒤 queue에서 꺼내 num의 합계를 구해준다.
