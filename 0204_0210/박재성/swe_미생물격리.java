@@ -15,7 +15,7 @@ public class swe_미생물격리 {
 	static Set<Point> AL;
 	static int[][] visited_arrD;
 	static int[][] visited_arrN;
-	static int[][] visited_arrTotal;	
+	static int[][] visited_arrTotal;
 	static int[][][] visited_arr_for_Clone;
 	static Queue<Pair> queue;
 
@@ -120,7 +120,7 @@ public class swe_미생물격리 {
 	static int getResult() {
 		int result = 0;
 		for (Point p : AL) {
-				result += visited_arrTotal[p.x][p.y];		
+			result += visited_arrTotal[p.x][p.y];
 		}
 		return result;
 	}
@@ -136,10 +136,10 @@ public class swe_미생물격리 {
 	static void make_next(Queue<Pair> queue) {
 		int r_dir;
 		int r_N;
-	
-		//for(Point p : AL)
-			//System.out.println(p.x + " - " + p.y);
-		//System.out.println();
+
+		// for(Point p : AL)
+		// System.out.println(p.x + " - " + p.y);
+		// System.out.println();
 		for (Point p : AL) {
 			r_dir = visited_arrD[p.x][p.y];
 			r_N = visited_arrTotal[p.x][p.y];
@@ -158,7 +158,6 @@ public class swe_미생물격리 {
 	// x , y , 미생물수, 방향
 	static class Pair {
 		private int x, y, n, d;
-
 		public Pair(int x, int y, int n, int d) {
 			this.x = x;
 			this.y = y;
@@ -169,14 +168,14 @@ public class swe_미생물격리 {
 
 	static class Point {
 		private int x, y;
-
 		public Point(int x, int y) {
 			this.x = x;
 			this.y = y;
 		}
+		
 		@Override
 		public boolean equals(Object obj) {
-			if(obj instanceof Point) {
+			if (obj instanceof Point) {
 				Point tmp = (Point) obj;
 				return (x == tmp.x) && (y == tmp.y);
 			}
@@ -185,7 +184,7 @@ public class swe_미생물격리 {
 
 		@Override
 		public int hashCode() {
-			return ( (x+y) + "" ).hashCode();
+			return ((x + y) + "").hashCode();
 		}
 	}
 }
