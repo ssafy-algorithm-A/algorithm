@@ -8,14 +8,14 @@ public class BaekJoon_17471_게리맨더링 {
 	static int[] people;
 	static int[][] arr;
 	static int[] temp, areaA, areaB;
-	static boolean[] mask, visited;
+	static boolean[] visited, mask;
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
 		arr = new int[N+1][];
 		people = new int[N+1];
-		
+
 		for(int i=1; i<=N; i++) people[i] = sc.nextInt();
 		
 		for(int i=1; i<=N; i++) {
@@ -26,12 +26,14 @@ public class BaekJoon_17471_게리맨더링 {
 			}
 		}
 		
+		
+		
 		for(int i=1; i<N; i++) {
-			mask = new boolean[N+1];
 			temp = new int[N+1];
+			mask = new boolean[N+1];
 			temp[0] = 1;
 			d = i;
-			recur(1, 0, 1);
+			recur(1, 0);
 		}
 		
 		if(answer == Integer.MAX_VALUE) System.out.println("-1");
@@ -39,8 +41,13 @@ public class BaekJoon_17471_게리맨더링 {
 		
 	}
 	
-	public static void recur(int start, int depth, int x) {
+	public static void recur(int start, int depth) {
 		if(depth == d) {
+			
+//			for(int i=1; i<=d; i++) {
+//				System.out.print(temp[i] + " ");
+//			}
+//			System.out.println();
 			
 			areaA = new int[d];
 			areaB = new int[N-d];
@@ -74,12 +81,12 @@ public class BaekJoon_17471_게리맨더링 {
 			
 			return;
 		}
-		for(int i=x; i<=N; i++) {
-//			if(mask[i]) continue;
+		for(int i=temp[start-1]; i<=N; i++) {
+			if(mask[i]) continue;
 			temp[start] = i;
-//			mask[i] = true;
-			recur(start+1, depth+1, i+1);
-//			mask[i] = false;
+			mask[i] = true;
+			recur(start+1, depth+1);
+			mask[i] = false;
 		}
 	}
 	
