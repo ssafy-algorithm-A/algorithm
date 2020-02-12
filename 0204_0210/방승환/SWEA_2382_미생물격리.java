@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 // 미생물 격리
 
-public class SWEA_2382 {
+public class SWEA_2382_미생물격리 {
 
 	static int N, M, K, result;
 	// dir[1]:상, [2]하, [3]좌, [4]우
