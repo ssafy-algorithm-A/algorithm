@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class SWEA_2105 {
+public class SWEA_2105_디저트카페 {
 
 	static int[][] map;
 	static int N, len, answer;
