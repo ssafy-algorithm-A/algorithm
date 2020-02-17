@@ -1,0 +1,154 @@
+package study;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class swe4008_숫자만들기 {
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static int answer = 0;
+	static int answer_Max;
+	static int answer_Min;
+	static int N;
+
+	static int op_num_arr[];
+	static String op_arr[];
+	static int num_arr[];
+	
+	
+	static ArrayList<Integer> AL;
+	static boolean visited[];
+
+	//Main
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		int T = Integer.parseInt(br.readLine());
+		for (int testcase = 1; testcase <= T; testcase++) {
+			init();
+			solution();
+			answer = answer_Max - answer_Min;
+			System.out.println("#" + (testcase) + " " + answer);
+		}
+	}
+	
+
+	//N - 사용되는 숫자 수.
+	public static void init() throws IOException {
+		
+		//초기화
+		answer = 0;
+		answer_Max = Integer.MIN_VALUE;
+		answer_Min = Integer.MAX_VALUE;
+		
+		N = Integer.parseInt(br.readLine());
+
+		op_num_arr = new int[4];
+		num_arr = new int[N];
+		AL = new ArrayList<>();
+		int idx = 0;
+
+		//입력
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		op_num_arr[0] = Integer.parseInt(st.nextToken());
+		op_num_arr[1] = Integer.parseInt(st.nextToken());
+		op_num_arr[2] = Integer.parseInt(st.nextToken());
+		op_num_arr[3] = Integer.parseInt(st.nextToken());
+
+		st = new StringTokenizer(br.readLine());	
+		while (st.hasMoreTokens())
+			num_arr[idx++] = Integer.parseInt(st.nextToken());
+		
+		//visited 초기화
+		int size = 0;
+		for(int i = 0; i<=3; i++) 
+			size += op_num_arr[i];
+		
+		//
+		idx = 0;
+		visited = new boolean[size];
+		op_arr = new String[size];
+		
+		//+ - * /
+		while(true) {
+			String buffer = "";
+			for(int j=0; j<op_num_arr[0]; j++) {
+				buffer = "+";
+				op_arr[idx++] = buffer; 
+			}
+			for(int j=0; j<op_num_arr[1]; j++) {
+				buffer = "-";
+				op_arr[idx++] = buffer; 
+			}
+			for(int j=0; j<op_num_arr[2]; j++) {
+				buffer = "*";
+				op_arr[idx++] = buffer; 
+			}
+			for(int j=0; j<op_num_arr[3]; j++) {
+				buffer = "/";
+				op_arr[idx++] = buffer; 
+			}
+			break;
+		}	
+	}
+
+	//Solution
+	public static void solution() {
+		DFS(0,  "");
+	}
+
+	
+	
+	//DFS
+	public static void DFS(int count, String buffer) {
+		if (count == op_arr.length) {
+			String last_op[] = buffer.split(" ");
+			int result = Calculate(last_op);
+			answer_Min = Math.min(answer_Min, result);
+			answer_Max = Math.max(answer_Max, result);		
+			return;
+		}
+		for (int i = 0; i < op_arr.length; i++) {
+
+			if (!visited[i]) {
+				visited[i] = true;
+				DFS(count + 1, op_arr[i] + " " + buffer);
+				visited[i] = false;
+			}
+		}
+	}
+	
+	//Cal
+	public static int Calculate(String last_op[]) {
+		int result = num_arr[0];
+		
+		//0 1, 0 | 2
+		for(int i =0; i<last_op.length; i++) {
+			
+			switch(last_op[i]) {			
+			case "+":
+				result += num_arr[i+1];
+				break;
+			case "-":
+				result -= num_arr[i+1];
+				break;
+			case "*":
+				result *= num_arr[i+1];
+				break;
+			case "/":
+				result /= num_arr[i+1];
+				break;
+			default :
+				break;
+			}
+		}
+	return result;
+	}
+	
+	
+	
+
+}
