@@ -1,12 +1,15 @@
 # 싸피 알고리즘
 
+## 2/18 ~ 2/26
+[- 사다리 조작](https://www.acmicpc.net/problem/15684)  
+[- 뱀](https://www.acmicpc.net/problem/3190)  
+[- 미세먼지 안녕!](https://www.acmicpc.net/problem/17144)  
+[- 주사위 윷놀이](https://www.acmicpc.net/problem/17825)
+
 ## 2/12 ~ 2/19
-[- 수영장](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq&categoryId=AV5PpFQaAQMDFAUq&categoryType=CODE)
-
-[- 숫자 만들기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeRZV6kBUDFAVH&categoryId=AWIeRZV6kBUDFAVH&categoryType=CODE)
-
-[- 파이프 옮기기 1](https://www.acmicpc.net/problem/17070)
-
+[- 수영장](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq&categoryId=AV5PpFQaAQMDFAUq&categoryType=CODE)  
+[- 숫자 만들기](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWIeRZV6kBUDFAVH&categoryId=AWIeRZV6kBUDFAVH&categoryType=CODE)  
+[- 파이프 옮기기 1](https://www.acmicpc.net/problem/17070)  
 [- 낚시왕 ](https://www.acmicpc.net/problem/17143)
 
 ## 2/4 ~ 2/10
