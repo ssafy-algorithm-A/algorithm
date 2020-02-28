@@ -41,9 +41,9 @@ public class bac17472_다리만들기2_G3 {
         check_island();
         init_map_and_distance();
         kruskal();
-        mpprint();
-        System.out.println();
-        pprint();
+       // mpprint();
+       // System.out.println();
+       // pprint();
 
         if(answer == 0)
             answer = -1;
@@ -85,6 +85,12 @@ public class bac17472_다리만들기2_G3 {
 
         int cnt = 0;
         int MST = 0;
+
+        //섬 숫자(N)보다 변수가 N-1 보다 적을 때.
+        if(length < ((p.length-1)-1)){
+            answer = -1;
+            return;
+        }
 
         for(int i =0; i<length; i++){
             Edge tmp = G[i];
