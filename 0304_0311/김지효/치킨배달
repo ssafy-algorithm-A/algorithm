@@ -1,0 +1,79 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class 백준_치킨배달_15686 {
+	static class house{
+		int row,col,cnt;
+		house(int row, int col, int cnt){
+			this.row = row;
+			this.col = col;
+			this.cnt = cnt;
+		}
+	}
+	static class chicken{
+		int row, col;
+		chicken(int row, int col){
+			this.row = row;
+			this.col = col;
+		}
+	}
+	static int N, M, result = Integer.MAX_VALUE;
+	static int[][] Map;
+	static ArrayList<house> home = new ArrayList(); //집들의 좌표를 가지고 있다.
+	static ArrayList<chicken> chick = new ArrayList(); //치킨집들의 좌표를 가지고 있다.
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		Map = new int[N][N];
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < N; j++) {
+				Map[i][j] = Integer.parseInt(st.nextToken());
+				if(Map[i][j] == 2) chick.add(new chicken(i,j));//치킨집의 경우
+				else if(Map[i][j] == 1) home.add(new house(i,j,999));//집의 경우
+			}
+		}
+		
+		searchRoute(0,0);
+		System.out.println(result);
+	}
+	
+	
+	//주어진 M만큼의 집들이 정해지면 그 집들에 대해서만 검사를 하게 한다.
+	static void searchRoute(int index, int cnt) {
+		if(cnt == M) {
+			int sum = 0;
+			for (int i = 0; i < home.size(); i++) {
+				sum += home.get(i).cnt;
+			}
+			result = Math.min(result, sum); //최솟값을 넣어준다.
+		}
+		else {
+			int []before = new int[home.size()];
+			//치킨집들이 M개만큼 정해지는동안 정해지는 치킨집에 대해서 각 집마다의 거리를 기록
+			for (int i = index; i < chick.size(); i++) {
+				int c_row = chick.get(i).row;
+				int c_col = chick.get(i).col;
+				
+				for (int j = 0; j < home.size(); j++) {
+					before[j] = home.get(j).cnt; //이전의 cnt값들을 저장하는 배열이다. 재귀가 끝나면 다시 이전의 상태로 돌려준다.
+					int h_row = home.get(j).row;
+					int h_col = home.get(j).col;
+					//여기서 현재 선택된 치킨집과의 모든 집들의 거리를 기록해준다.
+					int distance = Math.abs(h_row - c_row) + Math.abs(h_col - c_col);
+					if(home.get(j).cnt > distance) home.get(j).cnt = distance; //더 짧은 거리라면 이 거리를 넣어준다.
+				}
+				searchRoute(i+1, cnt+1);
+				for (int j = 0; j < home.size(); j++) {
+					home.get(j).cnt = before[j]; //이전의 값들을 다시 넣어준다.
+				}
+			}
+		}
+	}
+
+}
