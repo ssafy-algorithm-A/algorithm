@@ -1,5 +1,10 @@
 # 싸피 알고리즘
 
+## 3/11 ~ 3/18
+[- 문자열폭발](https://www.acmicpc.net/problem/9935)  
+[- 카카오기출:후보키](https://programmers.co.kr/learn/courses/30/lessons/42890)  
+[- 동전1](https://www.acmicpc.net/problem/2293) 
+
 ## 3/4 ~ 3/11
 [- 치킨배달](https://www.acmicpc.net/problem/15686)  
 [- 주사위 굴리기](https://www.acmicpc.net/problem/14499)  
