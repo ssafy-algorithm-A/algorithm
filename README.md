@@ -1,5 +1,10 @@
 # 싸피 알고리즘
 
+## 3/18 ~ 3/25
+[- 계단오르기](https://www.acmicpc.net/problem/2579)  
+[- 카카오기출:문자열압축](https://programmers.co.kr/learn/courses/30/lessons/60057)  
+[- 통나무옮기기](https://www.acmicpc.net/problem/1938) 
+
 ## 3/11 ~ 3/18
 [- 문자열폭발](https://www.acmicpc.net/problem/9935)  
 [- 카카오기출:후보키](https://programmers.co.kr/learn/courses/30/lessons/42890)  
